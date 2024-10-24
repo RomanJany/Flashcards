@@ -19,14 +19,6 @@ namespace Flashcards.Models
         }
 
         public Collection<FlashCard> FlashCards { get; }
-        private Random _random = new Random();
-        public FlashCard RandomFlashCard
-        {
-            get
-            {
-                return FlashCards[_random.Next(FlashCards.Count)];
-            }
-        }
 
         public void Add(FlashCard flashCard)
         {
