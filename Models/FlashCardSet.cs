@@ -9,6 +9,15 @@ namespace Flashcards.Models
 {
     public class FlashCardSet
     {
+        public FlashCardSet(Collection<FlashCard> flashCards)
+        {
+            FlashCards = flashCards;
+        }
+        public FlashCardSet() : this(new Collection<FlashCard>())
+        {
+            
+        }
+
         public Collection<FlashCard> FlashCards { get; }
         private Random _random = new Random();
         public FlashCard RandomFlashCard
