@@ -27,5 +27,30 @@ namespace Flashcards.Models
                 return FlashCards[_random.Next(FlashCards.Count)];
             }
         }
+
+        public void Add(FlashCard flashCard)
+        {
+            FlashCards.Add(flashCard);
+        }
+
+        public void Remove(int index)
+        {       
+            FlashCards.RemoveAt(index);
+        }
+
+        public void Clear()
+        {
+            FlashCards.Clear();
+        }
+
+        public void Save(string filename)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Open(string filename)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
