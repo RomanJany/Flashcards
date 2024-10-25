@@ -9,6 +9,7 @@ using static System.Net.Mime.MediaTypeNames;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using System.IO;
+using System.Windows.Media.Imaging;
 
 namespace Flashcards.Models
 {
@@ -63,6 +64,24 @@ namespace Flashcards.Models
         public void Open(string filename)
         {
             throw new NotImplementedException();
+        }
+
+        private string ImageToBase64(BitmapImage image)
+        {
+            if (image == null)
+            {
+                return "";
+            }
+            else
+            {
+                PngBitmapEncoder encoder = new PngBitmapEncoder();
+                using MemoryStream stream = new MemoryStream();
+
+                encoder.Frames.Add(BitmapFrame.Create(image));
+                encoder.Save(stream);
+
+                return Convert.ToBase64String(stream.ToArray());
+            }
         }
     }
 }
