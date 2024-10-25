@@ -24,7 +24,7 @@ namespace Flashcards.Models
             
         }
 
-        public Collection<FlashCard> FlashCards { get; }
+        public Collection<FlashCard> FlashCards { get; private set; }
 
         public void Add(FlashCard flashCard)
         {
@@ -61,9 +61,75 @@ namespace Flashcards.Models
             File.WriteAllText(fileName, jsonObject.ToJsonString());
         }
 
-        public void Open(string filename)
+        public void Open(string fileName)
         {
-            throw new NotImplementedException();
+            Collection<FlashCard> flashCards = new Collection<FlashCard>();
+            JsonNode node = JsonNode.Parse(File.ReadAllText(fileName));
+
+            try
+            {
+                node.AsObject();
+            }
+            catch (InvalidOperationException)
+            {
+                throw new InvalidDataException();
+            }
+            if (node.AsObject().TryGetPropertyValue("FlashCards", out JsonNode flashCardArray))
+            {
+                try
+                {
+                    flashCardArray.AsArray();
+                }
+                catch (InvalidOperationException)
+                {
+                    throw new InvalidDataException();
+                }
+
+                for (int i = 0; i < flashCardArray.AsArray().Count(); i++)
+                {
+                    JsonNode flashCard = flashCardArray.AsArray()[i];
+
+                    try
+                    {
+                        flashCard.AsObject();
+                    }
+                    catch (InvalidOperationException)
+                    {
+                        throw new InvalidDataException();
+                    }
+
+                    if ((flashCard.AsObject().TryGetPropertyValue("FrontText", out JsonNode frontText)) &&
+                        (flashCard.AsObject().TryGetPropertyValue("FrontImage", out JsonNode frontImage)) &&
+                        (flashCard.AsObject().TryGetPropertyValue("BackText", out JsonNode backText)) &&
+                        (flashCard.AsObject().TryGetPropertyValue("BackImage", out JsonNode backImage)))
+                    {
+                        try
+                        {
+                            flashCards.Add(new FlashCard
+                            {
+                                FrontText = (string)frontText,
+                                FrontImage = Base64ToImage((string)frontImage),
+                                BackText = (string)backText,
+                                BackImage = Base64ToImage((string)backImage)
+                            });
+                        }
+                        catch
+                        {
+                            throw new InvalidDataException();
+                        }
+                    }
+                    else
+                    {
+                        throw new InvalidDataException();
+                    }
+                }
+
+                FlashCards = flashCards;
+            }
+            else
+            {
+                throw new InvalidDataException();
+            }
         }
 
         private string ImageToBase64(BitmapImage image)
@@ -82,6 +148,11 @@ namespace Flashcards.Models
 
                 return Convert.ToBase64String(stream.ToArray());
             }
+        }
+
+        private BitmapImage Base64ToImage(string imageString)
+        {
+            throw new NotImplementedException();
         }
     }
 }
