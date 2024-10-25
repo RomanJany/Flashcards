@@ -152,7 +152,18 @@ namespace Flashcards.Models
 
         private BitmapImage Base64ToImage(string imageString)
         {
-            throw new NotImplementedException();
+            using MemoryStream stream = new MemoryStream();
+            byte[] bytes = Convert.FromBase64String(imageString);
+
+            stream.Write(bytes, 0, bytes.Length);
+
+            BitmapImage bitmapImage = new BitmapImage();
+            bitmapImage.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
+            bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+            bitmapImage.StreamSource = stream;
+            bitmapImage.EndInit();
+
+            return bitmapImage;
         }
     }
 }
