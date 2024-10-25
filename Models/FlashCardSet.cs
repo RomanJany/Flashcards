@@ -51,9 +51,9 @@ namespace Flashcards.Models
             {
                 JsonObject newObject = new JsonObject(); ;
                 newObject["FrontText"] = FlashCards[i].FrontText;
-                newObject["FrontImage"] = "";
+                newObject["FrontImage"] = ImageToBase64(FlashCards[i].FrontImage);
                 newObject["BackText"] = FlashCards[i].BackText;
-                newObject["BackImage"] = "";
+                newObject["BackImage"] = ImageToBase64(FlashCards[i].BackImage);
 
                 jsonArray.Add(newObject);
             }        
