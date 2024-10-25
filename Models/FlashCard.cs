@@ -12,6 +12,6 @@ namespace Flashcards.Models
         public required string FrontText { get; set; }
         public required BitmapImage FrontImage { get; set; }
         public required string BackText { get; set; }
-        public required string BackImage { get; set; }
+        public required BitmapImage BackImage { get; set; }
     }
 }
