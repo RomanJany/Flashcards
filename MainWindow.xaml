@@ -4,9 +4,26 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Flashcards"
+        xmlns:views="clr-namespace:Flashcards.Views"
+        xmlns:viewmodels="clr-namespace:Flashcards.ViewModels"        
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type viewmodels:MenuViewModel}">
+                <views:MenuView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:SelectViewModel}">
+                <views:SelectView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:EditViewModel}">
+                <views:EditView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:BrowseViewModel}">
+                <views:BrowseView />
+            </DataTemplate>
+        </Grid.Resources>
 
+        <ContentControl Content="{Binding CurrentViewModel}" />
     </Grid>
 </Window>
