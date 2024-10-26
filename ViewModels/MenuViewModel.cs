@@ -9,6 +9,10 @@ namespace Flashcards.ViewModels
 {
     public class MenuViewModel : BaseViewModel
     {
-
+        private readonly Navigation _navigation;
+        public MenuViewModel(Navigation navigation)
+        {
+            _navigation = navigation;
+        }
     }
 }
