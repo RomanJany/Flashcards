@@ -25,13 +25,15 @@
             </Grid.ColumnDefinitions>
 
             <Button Grid.Column="0"
-                    Margin="30,50">
+                    Margin="30,50"
+                    Command="{Binding goToSelectCommand}">
                 <Viewbox>
                     <Label Content="Select" />
                 </Viewbox>
             </Button>
             <Button Grid.Column="2"
-                    Margin="30,50">
+                    Margin="30,50"
+                    Command="{Binding goToEditCommand}">
                 <Viewbox>
                     <Label Content="Edit" />
                 </Viewbox>

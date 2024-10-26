@@ -1,9 +1,11 @@
-﻿using Notepad.ViewModels;
+﻿using Flashcards.Commands;
+using Notepad.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Flashcards.ViewModels
 {
@@ -13,6 +15,12 @@ namespace Flashcards.ViewModels
         public MenuViewModel(Navigation navigation)
         {
             _navigation = navigation;
+
+            goToSelectCommand = new GoToSelectCommand(_navigation);
+            goToEditCommand = new GoToEditCommand(_navigation);
         }
+
+        public ICommand goToSelectCommand { get; }
+        public ICommand goToEditCommand { get; }
     }
 }
