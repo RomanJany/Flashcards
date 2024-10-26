@@ -15,6 +15,13 @@ namespace Flashcards.ViewModels
         public MainViewModel(Navigation navigation)
         {
             _navigation = navigation;
+
+            _navigation.CurrentViewModelChanged += OnCurrentViewModelChanged;
+        }
+
+        private void OnCurrentViewModelChanged()
+        {
+            OnPropertyChanged(nameof(CurrentViewModel));
         }
     }
 }
