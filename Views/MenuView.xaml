@@ -27,19 +27,13 @@
             <Button Grid.Column="0"
                     Margin="30,50">
                 <Viewbox>
-                    <Label Content="New flashcard set" />
-                </Viewbox>
-            </Button>
-            <Button Grid.Column="1"
-                    Margin="30,50">
-                <Viewbox>
-                    <Label Content="Select flashcard set" />
+                    <Label Content="Select" />
                 </Viewbox>
             </Button>
             <Button Grid.Column="2"
                     Margin="30,50">
                 <Viewbox>
-                    <Label Content="Open flashcard set folder" />
+                    <Label Content="Edit" />
                 </Viewbox>
             </Button>
         </Grid>
