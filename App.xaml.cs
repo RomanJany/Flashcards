@@ -19,7 +19,7 @@ namespace Flashcards
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            _navigation.CurrentViewModel = new MenuViewModel();
+            _navigation.CurrentViewModel = new MenuViewModel(_navigation);
 
             MainWindow = new MainWindow()
             {
