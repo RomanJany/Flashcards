@@ -1,4 +1,5 @@
-﻿using Notepad.Commands;
+﻿using Flashcards.ViewModels;
+using Notepad.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace Flashcards.Commands
 
         public override void Execute(object? parameter)
         {
-            throw new NotImplementedException();
+            _navigation.CurrentViewModel = new EditViewModel(_navigation);
         }
     }
 }
