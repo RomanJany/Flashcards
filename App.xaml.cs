@@ -1,6 +1,7 @@
 ﻿using Flashcards.ViewModels;
 using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Windows;
 
 namespace Flashcards
@@ -19,6 +20,8 @@ namespace Flashcards
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "/FlashcardSets");
+
             _navigation.CurrentViewModel = new MenuViewModel(_navigation);
 
             MainWindow = new MainWindow()
