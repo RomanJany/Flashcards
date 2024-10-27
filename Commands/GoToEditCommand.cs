@@ -18,7 +18,8 @@ namespace Flashcards.Commands
 
         public override void Execute(object? parameter)
         {
-            _navigation.CurrentViewModel = new EditViewModel(_navigation);
+            //_navigation.CurrentViewModel = new EditViewModel(_navigation);
+            throw new NotImplementedException();
         }
     }
 }

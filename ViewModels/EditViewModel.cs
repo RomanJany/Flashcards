@@ -1,4 +1,5 @@
-﻿using Notepad.ViewModels;
+﻿using Flashcards.Models;
+using Notepad.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,11 @@ namespace Flashcards.ViewModels
     public class EditViewModel : BaseViewModel
     {
         private readonly Navigation _navigation;
-        public EditViewModel(Navigation navigation)
+        private readonly FlashCardSet _flashCardSet;
+        public EditViewModel(Navigation navigation, FlashCardSet flashCardSet)
         {
             _navigation = navigation;
+            _flashCardSet = flashCardSet;
         }
     }
 }
