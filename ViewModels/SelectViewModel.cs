@@ -17,7 +17,7 @@ namespace Flashcards.ViewModels
             _navigation = navigation;
 
             goToBrowseCommand = new GoToBrowseCommand(_navigation);
-            newFlashCardSetCommand = new NewFlashCardCommand(_navigation);
+            newFlashCardSetCommand = new NewFlashCardSetCommand(_navigation);
         }
 
         public ICommand goToBrowseCommand { get; }
