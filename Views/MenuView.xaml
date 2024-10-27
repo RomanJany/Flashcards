@@ -24,18 +24,11 @@
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0"
+            <Button Grid.Column="1"
                     Margin="30,50"
                     Command="{Binding goToSelectCommand}">
                 <Viewbox>
-                    <Label Content="Select" />
-                </Viewbox>
-            </Button>
-            <Button Grid.Column="2"
-                    Margin="30,50"
-                    Command="{Binding goToEditCommand}">
-                <Viewbox>
-                    <Label Content="Edit" />
+                    <Label Content="Open" />
                 </Viewbox>
             </Button>
         </Grid>

@@ -17,10 +17,8 @@ namespace Flashcards.ViewModels
             _navigation = navigation;
 
             goToSelectCommand = new GoToSelectCommand(_navigation);
-            goToEditCommand = new GoToEditCommand(_navigation);
         }
 
         public ICommand goToSelectCommand { get; }
-        public ICommand goToEditCommand { get; }
     }
 }
