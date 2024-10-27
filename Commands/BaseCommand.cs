@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Notepad.Commands
+namespace Flashcards.Commands
 {
     public abstract class BaseCommand : ICommand
     {
