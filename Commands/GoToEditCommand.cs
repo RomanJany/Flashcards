@@ -9,7 +9,7 @@ namespace Flashcards.Commands
 {
     public class GoToEditCommand : BaseCommand
     {
-        private Navigation _navigation;
+        private readonly Navigation _navigation;
 
         public GoToEditCommand(Navigation navigation)
         {
