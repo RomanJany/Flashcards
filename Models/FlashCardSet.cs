@@ -18,6 +18,7 @@ namespace Flashcards.Models
         public FlashCardSet(Collection<FlashCard> flashCards)
         {
             FlashCards = flashCards;
+            Name = "";
         }
         public FlashCardSet() : this(new Collection<FlashCard>())
         {
@@ -25,6 +26,8 @@ namespace Flashcards.Models
         }
 
         public Collection<FlashCard> FlashCards { get; private set; }
+
+        public string Name { get; set; }
 
         public void Add(FlashCard flashCard)
         {
@@ -45,6 +48,8 @@ namespace Flashcards.Models
         {
             JsonObject jsonObject = new JsonObject();
             JsonArray jsonArray = new JsonArray();
+
+            jsonObject.Add("Name", Name);
             jsonObject.Add("FlashCards", jsonArray);
 
             for (int i = 0; i < FlashCards.Count; i++)
@@ -66,6 +71,7 @@ namespace Flashcards.Models
             Collection<FlashCard> flashCards = new Collection<FlashCard>();
             JsonNode node = JsonNode.Parse(File.ReadAllText(fileName));
 
+            // Check if the first node is an object
             try
             {
                 node.AsObject();
@@ -73,9 +79,12 @@ namespace Flashcards.Models
             catch (InvalidOperationException)
             {
                 throw new InvalidDataException();
-            }
+            }         
+            
+            // Check for property FlashCards
             if (node.AsObject().TryGetPropertyValue("FlashCards", out JsonNode flashCardArray))
             {
+                // Check if FlashCards property is an array
                 try
                 {
                     flashCardArray.AsArray();
@@ -85,6 +94,7 @@ namespace Flashcards.Models
                     throw new InvalidDataException();
                 }
 
+                // Get properties of every flashcard inside the set
                 for (int i = 0; i < flashCardArray.AsArray().Count(); i++)
                 {
                     JsonNode flashCard = flashCardArray.AsArray()[i];
@@ -124,6 +134,24 @@ namespace Flashcards.Models
                     }
                 }
 
+                // Save Flashcard set name
+                if (node.AsObject().TryGetPropertyValue("Name", out JsonNode FlashCardSetName))
+                {
+                    try
+                    {
+                        Name = (string)FlashCardSetName;
+                    }
+                    catch
+                    {
+                        throw new InvalidDataException();
+                    }
+                }
+                else
+                {
+                    throw new InvalidDataException();
+                }
+
+                // Save Flashcard set
                 FlashCards = flashCards;
             }
             else
