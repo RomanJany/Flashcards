@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Flashcards.Models;
+using Flashcards.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +19,7 @@ namespace Flashcards.Commands
 
         public override void Execute(object? parameter)
         {
-            throw new NotImplementedException();
+            _navigation.CurrentViewModel = new EditViewModel(_navigation, new FlashCardSet());
         }
     }
 }
