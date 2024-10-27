@@ -180,6 +180,11 @@ namespace Flashcards.Models
 
         private BitmapImage Base64ToImage(string imageString)
         {
+            if (imageString == "")
+            {
+                return null;
+            }
+
             using MemoryStream stream = new MemoryStream();
             byte[] bytes = Convert.FromBase64String(imageString);
 
