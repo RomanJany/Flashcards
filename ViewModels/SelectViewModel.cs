@@ -18,11 +18,12 @@ namespace Flashcards.ViewModels
         public SelectViewModel(Navigation navigation)
         {
             _navigation = navigation;
+            FlashCardSets = new Collection<FlashCardSet>();
 
             goToBrowseCommand = new GoToBrowseCommand(_navigation);
             newFlashCardSetCommand = new NewFlashCardSetCommand(_navigation);
-
-            FlashCardSets = new Collection<FlashCardSet>();
+            goToEditCommand = new GoToEditCommand(_navigation, FlashCardSets);
+          
             GetFlashCardsFromFolder();
         }
 
@@ -68,5 +69,6 @@ namespace Flashcards.ViewModels
 
         public ICommand goToBrowseCommand { get; }
         public ICommand newFlashCardSetCommand { get; }
+        public ICommand goToEditCommand { get; }
     }
 }
