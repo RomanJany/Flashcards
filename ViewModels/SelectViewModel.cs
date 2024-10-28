@@ -23,6 +23,7 @@ namespace Flashcards.ViewModels
             goToBrowseCommand = new GoToBrowseCommand(_navigation);
             newFlashCardSetCommand = new NewFlashCardSetCommand(_navigation);
             goToEditCommand = new GoToEditCommand(_navigation, FlashCardSets);
+            deleteFlashCardSetCommand = new DeleteFlashCardSetCommand(FlashCardSets);
           
             GetFlashCardsFromFolder();
         }
@@ -70,5 +71,6 @@ namespace Flashcards.ViewModels
         public ICommand goToBrowseCommand { get; }
         public ICommand newFlashCardSetCommand { get; }
         public ICommand goToEditCommand { get; }
+        public ICommand deleteFlashCardSetCommand { get; }
     }
 }
