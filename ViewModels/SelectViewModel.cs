@@ -1,6 +1,5 @@
 ﻿using Flashcards.Commands;
 using Flashcards.Models;
-using Notepad.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
