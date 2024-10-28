@@ -57,7 +57,10 @@ namespace Flashcards.ViewModels
                 {
                     flashCardSet.Open(files[i]);
 
-                    FlashCardSets.Add(flashCardSet);
+                    if (flashCardSet.Name == FileNameFromPath(files[i]))
+                    {
+                        FlashCardSets.Add(flashCardSet);
+                    }                    
                 }
                 catch
                 {
@@ -66,6 +69,20 @@ namespace Flashcards.ViewModels
             }
 
             OnPropertyChanged(nameof(FlashCardSetNames));
+        }
+
+        private string FileNameFromPath(string path)
+        {
+            int length = path.Split("\\").Last().Split(".").Length;
+
+            if (length == 1)
+            {
+                return path.Split("\\").Last().Split(".")[0];
+            }
+            else
+            {
+                return path.Split("\\").Last().Split(".")[length-2];
+            }            
         }
 
         public ICommand goToBrowseCommand { get; }
