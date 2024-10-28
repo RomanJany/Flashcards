@@ -1,4 +1,4 @@
-﻿using Notepad.ViewModels;
+﻿using Flashcards.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
