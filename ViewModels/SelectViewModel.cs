@@ -23,8 +23,14 @@ namespace Flashcards.ViewModels
             newFlashCardSetCommand = new NewFlashCardSetCommand(_navigation);
             goToEditCommand = new GoToEditCommand(_navigation, FlashCardSets);
             deleteFlashCardSetCommand = new DeleteFlashCardSetCommand(FlashCardSets);
+            ((DeleteFlashCardSetCommand)deleteFlashCardSetCommand).FileDeleted += OnFlashCardSetDeleted;
           
             GetFlashCardsFromFolder();
+        }
+
+        public void OnFlashCardSetDeleted()
+        {
+            OnPropertyChanged(nameof(FlashCardSetNames));
         }
 
         public Collection<FlashCardSet> FlashCardSets { get; private set; }

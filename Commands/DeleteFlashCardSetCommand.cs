@@ -3,6 +3,7 @@ using Flashcards.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,16 @@ namespace Flashcards.Commands
 
         public override void Execute(object? parameter)
         {
-            throw new NotImplementedException();
+            if (parameter != null)
+            {
+                File.Delete(AppDomain.CurrentDomain.BaseDirectory + "/FlashcardSets/" + _flashCardSets[(int)parameter].Name + ".json");
+
+                _flashCardSets.RemoveAt((int)parameter);
+
+                FileDeleted?.Invoke();
+            }
         }
+
+        public event Action FileDeleted;
     }
 }
