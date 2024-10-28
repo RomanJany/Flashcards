@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Notepad.ViewModels
+namespace Flashcards.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
