@@ -44,6 +44,8 @@ namespace Flashcards.ViewModels
 
         public void GetFlashCardsFromFolder()
         {
+            FlashCardSets.Clear();
+
             string[] files = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + "/FlashcardSets", "*.json");
 
             for (int i = 0; i < files.Length; i++)
