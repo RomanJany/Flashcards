@@ -19,8 +19,9 @@
                     <RowDefinition Height="1*" />
                 </Grid.RowDefinitions>
             
-                <Button Grid.Row="0"
-                        Height="100"/>
+                <Image Grid.Row="0"
+                       Height="100"
+                       Source="{Binding CurrentImage}"/>
                 <TextBox Grid.Row="1"
                            Text="{Binding CurrentText}"  
                            TextWrapping="Wrap"
