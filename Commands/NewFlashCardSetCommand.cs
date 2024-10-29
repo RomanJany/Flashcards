@@ -19,7 +19,9 @@ namespace Flashcards.Commands
 
         public override void Execute(object? parameter)
         {
-            _navigation.CurrentViewModel = new EditViewModel(_navigation, new FlashCardSet());
+            FlashCardSet flashCardSet = new FlashCardSet();
+            flashCardSet.Add(new FlashCard { FrontText="", FrontImage=null, BackText="", BackImage=null});
+            _navigation.CurrentViewModel = new EditViewModel(_navigation, flashCardSet);
         }
     }
 }
