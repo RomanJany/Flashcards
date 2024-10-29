@@ -104,6 +104,13 @@
                         <Label Content="Previous flashcard"/>
                     </Viewbox>
                 </Button>
+                <Button Grid.Row="6"
+                        Margin="10,5"
+                        Command="{Binding flipFlashCardCommand}">    
+                    <Viewbox>
+                        <Label Content="Flip flashcard"/>
+                    </Viewbox>
+                </Button>
                 <TextBox Text="{Binding FlashCardSetName}" 
                          Grid.Row="7"
                          Margin="10,5" 

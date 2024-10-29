@@ -33,6 +33,13 @@ namespace Flashcards.ViewModels
             previousFlashCardCommand = new PreviousFlashCardCommand(_flashCardSet);
             ((PreviousFlashCardCommand)previousFlashCardCommand).PreviousFlashCardSelected += OnPreviousFlashCardSelected;
             saveFlashCardSetCommand = new SaveFlashCardSetCommand(_flashCardSet);
+            flipFlashCardCommand = new FlipFlashCardCommand();
+            ((FlipFlashCardCommand)flipFlashCardCommand).FlashCardFlipped += OnFlashCardFlipped;
+        }
+
+        private void OnFlashCardFlipped()
+        {
+            FrontSide = !FrontSide;
         }
 
         private void OnNextFlashCardSelected()
@@ -183,5 +190,6 @@ namespace Flashcards.ViewModels
         public ICommand nextFlashCardCommand { get; }
         public ICommand previousFlashCardCommand { get; }
         public ICommand saveFlashCardSetCommand { get; }
+        public ICommand flipFlashCardCommand { get; }
     }
 }
