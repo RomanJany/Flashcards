@@ -17,6 +17,7 @@ namespace Flashcards.Commands
         public RemoveImageCommand(EditViewModel viewModel)
         {
             _editViewModel = viewModel;
+            _editViewModel.ImageChanged += OnCanExecuteChanged;
         }
 
         public override void Execute(object? parameter)

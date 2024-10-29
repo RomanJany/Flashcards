@@ -75,6 +75,7 @@ namespace Flashcards.ViewModels
                     FrontSide = true;
                 }
                 OnPropertyChanged(nameof(CurrentFlashCardIndex));
+                FrontSide = FrontSide;
             }
         }
 
@@ -126,6 +127,7 @@ namespace Flashcards.ViewModels
             }
         }
 
+        public event Action ImageChanged;
         public BitmapImage CurrentImage
         {
             get
@@ -152,6 +154,7 @@ namespace Flashcards.ViewModels
                 OnPropertyChanged(nameof(CurrentImage));
                 OnPropertyChanged(nameof(HasImage));
                 OnPropertyChanged(nameof(NHasImage));
+                ImageChanged?.Invoke();
             }
         }
 
@@ -171,6 +174,7 @@ namespace Flashcards.ViewModels
                 OnPropertyChanged(nameof(FlipButtonText));
                 OnPropertyChanged(nameof(CurrentText));
                 OnPropertyChanged(nameof(CurrentImage));
+                ImageChanged?.Invoke();
             }
         }
         public string FlipButtonText
