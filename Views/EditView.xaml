@@ -88,7 +88,8 @@
                     </Viewbox>
                 </Button>
                 <Button Grid.Row="3"
-                        Margin="10,5">
+                        Margin="10,5"
+                        Command="{Binding removeImageCommand}">
                     <Viewbox>
                         <Label Content="Remove image"/>
                     </Viewbox>
