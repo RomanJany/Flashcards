@@ -20,8 +20,15 @@ namespace Flashcards.Commands
 
         public override void Execute(object? parameter)
         {
-            _flashCardSet.Save(AppDomain.CurrentDomain.BaseDirectory + "/FlashcardSets/" + _flashCardSet.Name + ".json");
-            MessageBox.Show("Flashcard saved");
+            if (_flashCardSet.Name != "")
+            {
+                _flashCardSet.Save(AppDomain.CurrentDomain.BaseDirectory + "/FlashcardSets/" + _flashCardSet.Name + ".json");
+                MessageBox.Show("Flashcard set saved");
+            }
+            else
+            {
+                MessageBox.Show("Enter Name");
+            }
         }
     }
 }
