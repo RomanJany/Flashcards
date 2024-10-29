@@ -97,30 +97,56 @@ namespace Flashcards.ViewModels
             }
         }
 
-        private string _currentText;
         public string CurrentText
         {
             get
             {
-                return _currentText;
+                if (FrontSide)
+                {
+                    return CurrentFlashCard.FrontText;
+                }
+                else
+                {
+                    return CurrentFlashCard.BackText;
+                }
             }
             set
             {
-                _currentText = value;
+                if (FrontSide)
+                {
+                    CurrentFlashCard.FrontText = value;
+                }
+                else
+                {
+                    CurrentFlashCard.BackText = value;
+                }
                 OnPropertyChanged(nameof(CurrentText));
             }
         }
 
-        private BitmapImage _currentImage;
         public BitmapImage CurrentImage
         {
             get
             {
-                return _currentImage;
+                if (FrontSide)
+                {
+                    return CurrentFlashCard.FrontImage;
+                }
+                else
+                {
+                    return CurrentFlashCard.BackImage;
+                }
             }
             set
             {
-                _currentImage = value;
+                if (FrontSide)
+                {
+                    CurrentFlashCard.FrontImage = value;
+                }
+                else
+                {
+                    CurrentFlashCard.BackImage = value;
+                }
                 OnPropertyChanged(nameof(CurrentImage));
             }
         }
@@ -135,23 +161,9 @@ namespace Flashcards.ViewModels
             set
             {
                 _frontSide = value;
-                _flashCardSideUpdate();
+                
                 OnPropertyChanged(nameof(HasImage));
                 OnPropertyChanged(nameof(NHasImage));
-            }
-        }
-
-        private void _flashCardSideUpdate()
-        {
-            if (FrontSide)
-            {
-                CurrentText = CurrentFlashCard.FrontText;
-                CurrentImage = CurrentFlashCard.FrontImage;
-            }
-            else
-            {
-                CurrentText = CurrentFlashCard.BackText;
-                CurrentImage = CurrentFlashCard.BackImage;
             }
         }
 
