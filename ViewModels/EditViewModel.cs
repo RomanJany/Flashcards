@@ -32,6 +32,7 @@ namespace Flashcards.ViewModels
             ((NextFlashCardCommand)nextFlashCardCommand).NextFlashCardSelected += OnNextFlashCardSelected;
             previousFlashCardCommand = new PreviousFlashCardCommand(_flashCardSet);
             ((PreviousFlashCardCommand)previousFlashCardCommand).PreviousFlashCardSelected += OnPreviousFlashCardSelected;
+            saveFlashCardSetCommand = new SaveFlashCardSetCommand(_flashCardSet);
         }
 
         private void OnNextFlashCardSelected()
@@ -181,5 +182,6 @@ namespace Flashcards.ViewModels
         public ICommand deleteFlashCardCommand { get; }
         public ICommand nextFlashCardCommand { get; }
         public ICommand previousFlashCardCommand { get; }
+        public ICommand saveFlashCardSetCommand { get; }
     }
 }

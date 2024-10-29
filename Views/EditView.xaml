@@ -110,7 +110,8 @@
                          TextAlignment="Center"
                          VerticalContentAlignment="Center" />
                 <Button Grid.Row="8"
-                        Margin="10,5">
+                        Margin="10,5"
+                        Command="{Binding saveFlashCardSetCommand}">
                     <Viewbox>
                         <Label Content="Save"/>
                     </Viewbox>
