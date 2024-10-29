@@ -89,7 +89,9 @@
                     </Viewbox>
                 </Button>
                 <Button Grid.Row="4"
-                        Margin="10,5">
+                        Margin="10,5"
+                        Command="{Binding nextFlashCardCommand}"
+                        CommandParameter="{Binding CurrentFlashCardIndex}">
                     <Viewbox>
                         <Label Content="Next flashcard"/>
                     </Viewbox>
