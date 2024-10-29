@@ -104,9 +104,11 @@
                         <Label Content="Previous flashcard"/>
                     </Viewbox>
                 </Button>
-                <TextBox Text="" 
+                <TextBox Text="{Binding FlashCardSetName}" 
                          Grid.Row="7"
-                         Margin="10,5" />
+                         Margin="10,5" 
+                         TextAlignment="Center"
+                         VerticalContentAlignment="Center" />
                 <Button Grid.Row="8"
                         Margin="10,5">
                     <Viewbox>

@@ -68,6 +68,19 @@ namespace Flashcards.ViewModels
             }
         }
 
+        public string FlashCardSetName
+        {
+            get
+            {
+                return _flashCardSet.Name;
+            }
+            set
+            {
+                _flashCardSet.Name = value;
+                OnPropertyChanged(nameof(FlashCardSetName));
+            }
+        }
+
         public FlashCard CurrentFlashCard
         {
             get
