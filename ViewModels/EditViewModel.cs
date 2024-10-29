@@ -164,6 +164,21 @@ namespace Flashcards.ViewModels
                 
                 OnPropertyChanged(nameof(HasImage));
                 OnPropertyChanged(nameof(NHasImage));
+                OnPropertyChanged(nameof(FlipButtonText));              
+            }
+        }
+        public string FlipButtonText
+        {
+            get
+            {
+                if (FrontSide)
+                {
+                    return "Flip (Front)";
+                }
+                else
+                {
+                    return "Flip (Back)";
+                }
             }
         }
 

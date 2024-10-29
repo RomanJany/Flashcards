@@ -111,7 +111,7 @@
                         Margin="10,5"
                         Command="{Binding flipFlashCardCommand}">    
                     <Viewbox>
-                        <Label Content="Flip flashcard"/>
+                        <Label Content="{Binding FlipButtonText}" />
                     </Viewbox>
                 </Button>
                 <TextBox Text="{Binding FlashCardSetName}" 
