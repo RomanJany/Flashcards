@@ -107,7 +107,8 @@
                     </Viewbox>
                 </Button>
                 <Button Grid.Row="9"
-                        Margin="10,5">
+                        Margin="10,5"
+                        Command="{Binding goToSelectCommand}">
                     <Viewbox>
                         <Label Content="Back"/>
                     </Viewbox>

@@ -1,10 +1,12 @@
-﻿using Flashcards.Models;
+﻿using Flashcards.Commands;
+using Flashcards.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace Flashcards.ViewModels
 {
@@ -18,6 +20,8 @@ namespace Flashcards.ViewModels
             _flashCardSet = flashCardSet;
 
             HasImage = Visibility.Collapsed;
+
+            goToSelectCommand = new GoToSelectCommand(_navigation);
         }
 
         private Visibility _hasImage;
@@ -48,5 +52,7 @@ namespace Flashcards.ViewModels
                 }
             }
         }
+
+        public ICommand goToSelectCommand { get; }
     }
 }
