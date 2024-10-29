@@ -21,9 +21,11 @@ namespace Flashcards.Commands
         }
 
         public override void Execute(object? parameter)
-        {
-            //_navigation.CurrentViewModel = new EditViewModel(_navigation);
-            throw new NotImplementedException();
+        {            
+            if (parameter != null && (int)parameter != -1)
+            {
+                _navigation.CurrentViewModel = new EditViewModel(_navigation, _flashCardSets[(int)parameter]);
+            }
         }
     }
 }
