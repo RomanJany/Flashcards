@@ -28,7 +28,7 @@ namespace Flashcards.ViewModels
             GetFlashCardsFromFolder();
         }
 
-        public void OnFlashCardSetDeleted()
+        private void OnFlashCardSetDeleted()
         {
             OnPropertyChanged(nameof(FlashCardSetNames));
         }
