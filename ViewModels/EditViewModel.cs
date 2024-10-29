@@ -26,11 +26,18 @@ namespace Flashcards.ViewModels
             goToSelectCommand = new GoToSelectCommand(_navigation);
             newFlashCardCommand = new NewFlashCardCommand(_flashCardSet);
             ((NewFlashCardCommand)newFlashCardCommand).FlashCardAdded += OnFlashCardAdded;
+            deleteFlashCardCommand = new DeleteFlashCardCommand(_flashCardSet);
+            ((DeleteFlashCardCommand)deleteFlashCardCommand).FlashCardDeleted += OnFlashCardDeleted;
         }
 
         private void OnFlashCardAdded()
         {
             CurrentFlashCardIndex = _flashCardSet.FlashCards.Count - 1;
+        }
+
+        private void OnFlashCardDeleted()
+        {
+            CurrentFlashCardIndex--;
         }
 
         private int _currentFlashCardIndex;
@@ -48,6 +55,7 @@ namespace Flashcards.ViewModels
 
                     FrontSide = true;
                 }
+                OnPropertyChanged(nameof(CurrentFlashCardIndex));
             }
         }
 
@@ -148,5 +156,6 @@ namespace Flashcards.ViewModels
 
         public ICommand goToSelectCommand { get; }
         public ICommand newFlashCardCommand { get; }
+        public ICommand deleteFlashCardCommand { get; }
     }
 }
