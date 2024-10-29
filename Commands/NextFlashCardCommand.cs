@@ -21,7 +21,7 @@ namespace Flashcards.Commands
 
         public override void Execute(object? parameter)
         {
-            if (parameter != null && _flashCardSet.FlashCards.Count <= (int)parameter + 1)
+            if (parameter != null && _flashCardSet.FlashCards.Count > (int)parameter + 1)
             {
                 NextFlashCardSelected?.Invoke();
             }
