@@ -12,9 +12,8 @@
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
 
-        <Viewbox>
-            <Grid Grid.Column="0"
-                  Visibility="{Binding HasImage}">
+        <Viewbox Grid.Column="0">
+            <Grid Visibility="{Binding HasImage}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="3*" />
                     <RowDefinition Height="1*" />
@@ -22,9 +21,10 @@
             
                 <Button Grid.Row="0"
                         Height="100"/>
-                <TextBlock Grid.Row="1"
-                           Text="" 
+                <TextBox Grid.Row="1"
+                           Text="{Binding CurrentText}"  
                            TextWrapping="Wrap"
+                           BorderThickness="0"
                            FontSize="30"
                            TextAlignment="Center"
                            VerticalAlignment="Center"
@@ -33,16 +33,19 @@
             </Grid>
         </Viewbox>
 
-        <Grid Grid.Column="0"
+        <Viewbox Grid.Column="0">
+            <Grid Grid.Column="0"
               Visibility="{Binding NHasImage}">
-            <TextBlock Text="" 
+                <TextBox Text="{Binding CurrentText}" 
                        TextWrapping="Wrap"
+                       BorderThickness="0"
                        FontSize="30"
                        TextAlignment="Center"
                        VerticalAlignment="Center"
                        Margin="30"
                        Width="400" />
-        </Grid>
+            </Grid>
+        </Viewbox>
 
         <Border BorderBrush="Black" 
                 BorderThickness="1" 
