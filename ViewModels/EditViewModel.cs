@@ -35,6 +35,7 @@ namespace Flashcards.ViewModels
             saveFlashCardSetCommand = new SaveFlashCardSetCommand(_flashCardSet);
             flipFlashCardCommand = new FlipFlashCardCommand();
             ((FlipFlashCardCommand)flipFlashCardCommand).FlashCardFlipped += OnFlashCardFlipped;
+            addImageCommand = new AddImageCommand(this);
         }
 
         private void OnFlashCardFlipped()
@@ -148,6 +149,8 @@ namespace Flashcards.ViewModels
                     CurrentFlashCard.BackImage = value;
                 }
                 OnPropertyChanged(nameof(CurrentImage));
+                OnPropertyChanged(nameof(HasImage));
+                OnPropertyChanged(nameof(NHasImage));
             }
         }
 
@@ -220,5 +223,6 @@ namespace Flashcards.ViewModels
         public ICommand previousFlashCardCommand { get; }
         public ICommand saveFlashCardSetCommand { get; }
         public ICommand flipFlashCardCommand { get; }
+        public ICommand addImageCommand { get; }
     }
 }

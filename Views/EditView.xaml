@@ -80,7 +80,8 @@
                     </Viewbox>
                 </Button>
                 <Button Grid.Row="2"
-                        Margin="10,5">
+                        Margin="10,5"
+                        Command="{Binding addImageCommand}">
                     <Viewbox>
                         <Label Content="Add image"/>
                     </Viewbox>
