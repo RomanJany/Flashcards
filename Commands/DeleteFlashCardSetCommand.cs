@@ -32,5 +32,17 @@ namespace Flashcards.Commands
         }
 
         public event Action FileDeleted;
+
+        public override bool CanExecute(object? parameter)
+        {
+            if (parameter != null && (int)parameter != -1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

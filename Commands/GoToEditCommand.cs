@@ -27,5 +27,17 @@ namespace Flashcards.Commands
                 _navigation.CurrentViewModel = new EditViewModel(_navigation, _flashCardSets[(int)parameter]);
             }
         }
+
+        public override bool CanExecute(object? parameter)
+        {
+            if (parameter != null && (int)parameter != -1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
