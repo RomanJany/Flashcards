@@ -46,24 +46,27 @@ namespace Flashcards.Models
 
         public void Save(string fileName)
         {
-            JsonObject jsonObject = new JsonObject();
-            JsonArray jsonArray = new JsonArray();
-
-            jsonObject.Add("Name", Name);
-            jsonObject.Add("FlashCards", jsonArray);
-
-            for (int i = 0; i < FlashCards.Count; i++)
+            if (FlashCards.Count > 0)
             {
-                JsonObject newObject = new JsonObject(); ;
-                newObject["FrontText"] = FlashCards[i].FrontText;
-                newObject["FrontImage"] = ImageToBase64(FlashCards[i].FrontImage);
-                newObject["BackText"] = FlashCards[i].BackText;
-                newObject["BackImage"] = ImageToBase64(FlashCards[i].BackImage);
+                JsonObject jsonObject = new JsonObject();
+                JsonArray jsonArray = new JsonArray();
 
-                jsonArray.Add(newObject);
-            }        
+                jsonObject.Add("Name", Name);
+                jsonObject.Add("FlashCards", jsonArray);
 
-            File.WriteAllText(fileName, jsonObject.ToJsonString());
+                for (int i = 0; i < FlashCards.Count; i++)
+                {
+                    JsonObject newObject = new JsonObject(); ;
+                    newObject["FrontText"] = FlashCards[i].FrontText;
+                    newObject["FrontImage"] = ImageToBase64(FlashCards[i].FrontImage);
+                    newObject["BackText"] = FlashCards[i].BackText;
+                    newObject["BackImage"] = ImageToBase64(FlashCards[i].BackImage);
+
+                    jsonArray.Add(newObject);
+                }
+
+                File.WriteAllText(fileName, jsonObject.ToJsonString());
+            }
         }
 
         public void Open(string fileName)
