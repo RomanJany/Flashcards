@@ -194,6 +194,7 @@ namespace Flashcards.Models
             stream.Write(bytes, 0, bytes.Length);
 
             BitmapImage bitmapImage = new BitmapImage();
+            bitmapImage.BeginInit();
             bitmapImage.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
             bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
             bitmapImage.StreamSource = stream;
