@@ -164,7 +164,9 @@ namespace Flashcards.ViewModels
                 
                 OnPropertyChanged(nameof(HasImage));
                 OnPropertyChanged(nameof(NHasImage));
-                OnPropertyChanged(nameof(FlipButtonText));              
+                OnPropertyChanged(nameof(FlipButtonText));
+                OnPropertyChanged(nameof(CurrentText));
+                OnPropertyChanged(nameof(CurrentImage));
             }
         }
         public string FlipButtonText
