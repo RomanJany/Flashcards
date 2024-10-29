@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Flashcards.Models;
+using Flashcards.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,16 +10,19 @@ namespace Flashcards.Commands
 {
     public class NewFlashCardCommand : BaseCommand
     {
-        private readonly Navigation _navigation;
+        private readonly FlashCardSet _flashCardSet;
 
-        public NewFlashCardCommand(Navigation navigation)
+        public NewFlashCardCommand(FlashCardSet flashCardSet)
         {
-            _navigation = navigation;
+            _flashCardSet = flashCardSet;
         }
+
+        public event Action FlashCardAdded;
 
         public override void Execute(object? parameter)
         {
-            throw new NotImplementedException();
+            _flashCardSet.Add(new FlashCard { FrontText="", FrontImage=null, BackText="", BackImage=null });
+            FlashCardAdded?.Invoke();
         }
     }
 }

@@ -62,7 +62,8 @@
                 </Grid.RowDefinitions>
 
                 <Button Grid.Row="0"
-                        Margin="10,5">
+                        Margin="10,5"
+                        Command="{Binding newFlashCardCommand}">
                     <Viewbox>
                         <Label Content="Add flashcard"/>
                     </Viewbox>

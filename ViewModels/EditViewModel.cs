@@ -24,6 +24,13 @@ namespace Flashcards.ViewModels
             FrontSide = true;
 
             goToSelectCommand = new GoToSelectCommand(_navigation);
+            newFlashCardCommand = new NewFlashCardCommand(_flashCardSet);
+            ((NewFlashCardCommand)newFlashCardCommand).FlashCardAdded += OnFlashCardAdded;
+        }
+
+        private void OnFlashCardAdded()
+        {
+            CurrentFlashCardIndex = _flashCardSet.FlashCards.Count - 1;
         }
 
         private int _currentFlashCardIndex;
@@ -140,5 +147,6 @@ namespace Flashcards.ViewModels
         }
 
         public ICommand goToSelectCommand { get; }
+        public ICommand newFlashCardCommand { get; }
     }
 }
