@@ -37,7 +37,8 @@
 
             <Button Grid.Column="0"
                     Margin="30,20"
-                    Command="{Binding goToBrowseCommand}">
+                    Command="{Binding goToBrowseCommand}"
+                    CommandParameter="{Binding ElementName=SelectionListBox, Path=SelectedIndex}">
                 <Viewbox>
                     <Label Content="Select" />
                 </Viewbox>

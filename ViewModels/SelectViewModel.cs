@@ -19,7 +19,7 @@ namespace Flashcards.ViewModels
             _navigation = navigation;
             FlashCardSets = new Collection<FlashCardSet>();
 
-            goToBrowseCommand = new GoToBrowseCommand(_navigation);
+            goToBrowseCommand = new GoToBrowseCommand(_navigation, FlashCardSets);
             newFlashCardSetCommand = new NewFlashCardSetCommand(_navigation);
             goToEditCommand = new GoToEditCommand(_navigation, FlashCardSets);
             deleteFlashCardSetCommand = new DeleteFlashCardSetCommand(FlashCardSets);

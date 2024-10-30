@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Flashcards.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,9 +10,11 @@ namespace Flashcards.ViewModels
     public class BrowseViewModel : BaseViewModel
     {
         private readonly Navigation _navigation;
-        public BrowseViewModel(Navigation navigation)
+        private readonly FlashCardSet _flashCardSet;
+        public BrowseViewModel(Navigation navigation, FlashCardSet flashCardSet)
         {
             _navigation = navigation;
+            _flashCardSet = flashCardSet;
         }
     }
 }
