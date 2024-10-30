@@ -13,6 +13,12 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
+            <Grid.InputBindings>
+                <MouseBinding MouseAction="LeftClick" Command="{Binding flipFlashCardCommand}"/>
+            </Grid.InputBindings>
+
+            <TextBlock />
+
             <Viewbox>
                 <Grid Visibility="{Binding HasImage}">
                     <Grid.RowDefinitions>
