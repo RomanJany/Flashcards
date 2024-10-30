@@ -25,6 +25,7 @@ namespace Flashcards.ViewModels
             deleteFlashCardSetCommand = new DeleteFlashCardSetCommand(FlashCardSets);
             ((DeleteFlashCardSetCommand)deleteFlashCardSetCommand).FileDeleted += OnFlashCardSetDeleted;
             openFlashCardFolderCommand = new OpenFlashCardFolderCommand();
+            goToSelectCommand = new GoToSelectCommand(_navigation);
           
             GetFlashCardsFromFolder();
         }
@@ -96,5 +97,6 @@ namespace Flashcards.ViewModels
         public ICommand goToEditCommand { get; }
         public ICommand deleteFlashCardSetCommand { get; }
         public ICommand openFlashCardFolderCommand { get; }
+        public ICommand goToSelectCommand { get; }
     }
 }
