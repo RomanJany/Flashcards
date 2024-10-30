@@ -21,37 +21,43 @@ namespace Flashcards.ViewModels
             _navigation = navigation;
             _flashCardSet = flashCardSet;
 
-            CurrentFlashCardIndex = 0;
+            _random = new Random();
+            OnNextFlashCardSelected();
             FrontSide = true;
 
             goToSelectCommand = new GoToSelectCommand(_navigation);
+            nextFlashCardCommand = new NextFlashCardCommand(_flashCardSet);
+            ((NextFlashCardCommand)nextFlashCardCommand).NextFlashCardSelected += OnNextFlashCardSelected;
         }
 
-        private int _currentFlashCardIndex;
-        public int CurrentFlashCardIndex
+        private void OnNextFlashCardSelected()
+        {
+            CurrentFlashCard = _flashCardSet.FlashCards[_random.Next(_flashCardSet.FlashCards.Count)];
+        }
+
+        private Random _random;
+
+        public int nIndex
         {
             get
             {
-                return _currentFlashCardIndex;
-            }
-            set
-            {
-                if (value >= 0 && value < _flashCardSet.FlashCards.Count)
-                {
-                    _currentFlashCardIndex = value;
-
-                    FrontSide = true;
-                }
-                OnPropertyChanged(nameof(CurrentFlashCardIndex));
-                FrontSide = FrontSide;
+                return -1;
             }
         }
 
+        private FlashCard _currentFlashCard;
         public FlashCard CurrentFlashCard
         {
             get
             {
-                return _flashCardSet.FlashCards[CurrentFlashCardIndex];
+                return _currentFlashCard;
+            }
+            set
+            {
+                _currentFlashCard = value;
+
+                FrontSide = true;
+                OnPropertyChanged(nameof(CurrentFlashCard));
             }
         }
 
@@ -159,5 +165,6 @@ namespace Flashcards.ViewModels
         }
 
         public ICommand goToSelectCommand { get; }
+        public ICommand nextFlashCardCommand { get; }
     }    
 }
