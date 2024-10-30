@@ -57,7 +57,8 @@
             </Grid.ColumnDefinitions>
             
             <Button Grid.Column="1"                     
-                    Margin="0, 20" >
+                    Margin="0, 20"
+                    Command="{Binding goToSelectCommand}">
                 <Viewbox>
                     <Label Content="Return to selection" />
                 </Viewbox>

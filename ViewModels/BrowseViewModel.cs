@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Windows.Xps.Packaging;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using System.Windows.Input;
+using Flashcards.Commands;
 
 namespace Flashcards.ViewModels
 {
@@ -21,6 +23,8 @@ namespace Flashcards.ViewModels
 
             CurrentFlashCardIndex = 0;
             FrontSide = true;
+
+            goToSelectCommand = new GoToSelectCommand(_navigation);
         }
 
         private int _currentFlashCardIndex;
@@ -153,5 +157,7 @@ namespace Flashcards.ViewModels
                 OnPropertyChanged(nameof(CurrentImage));
             }
         }
+
+        public ICommand goToSelectCommand { get; }
     }    
 }
