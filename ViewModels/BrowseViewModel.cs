@@ -32,7 +32,16 @@ namespace Flashcards.ViewModels
 
         private void OnNextFlashCardSelected()
         {
+            FlashCard oldFlashCard = CurrentFlashCard;
             CurrentFlashCard = _flashCardSet.FlashCards[_random.Next(_flashCardSet.FlashCards.Count)];
+
+            if (_flashCardSet.FlashCards.Count > 1 && oldFlashCard != null)
+            {
+                while (oldFlashCard.GetHashCode() == CurrentFlashCard.GetHashCode())
+                {
+                    CurrentFlashCard = _flashCardSet.FlashCards[_random.Next(_flashCardSet.FlashCards.Count)];
+                }
+            }
         }
 
         private Random _random;
