@@ -6,11 +6,25 @@
              xmlns:local="clr-namespace:Flashcards.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Grid KeyboardNavigation.ControlTabNavigation="None">
         <Grid.RowDefinitions>
             <RowDefinition Height="4*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
+        <Grid.InputBindings>
+            <KeyBinding Key="Left"
+                        Command="{Binding nextFlashCardCommand}"
+                        CommandParameter="{Binding nIndex}" />
+            <KeyBinding Key="Right"
+                        Command="{Binding nextFlashCardCommand}"
+                        CommandParameter="{Binding nIndex}" />
+            <KeyBinding Key="Up"
+                        Command="{Binding flipFlashCardCommand}" />
+            <KeyBinding Key="Down"
+                        Command="{Binding flipFlashCardCommand}" />
+            <MouseBinding MouseAction="WheelClick"
+                          Command="{Binding flipFlashCardCommand}" />
+        </Grid.InputBindings>
 
         <Grid Grid.Row="0">
             <Grid.InputBindings>
