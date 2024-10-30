@@ -33,6 +33,7 @@
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
 
             <Button Grid.Column="0"
@@ -64,6 +65,13 @@
                     CommandParameter="{Binding ElementName=SelectionListBox, Path=SelectedIndex}">
                 <Viewbox>
                     <Label Content="Delete" />
+                </Viewbox>
+            </Button>
+            <Button Grid.Column="4"
+                    Margin="30,20"
+                    Command="{Binding openFlashCardFolderCommand}">
+                <Viewbox>
+                    <Label Content="Open Folder" />
                 </Viewbox>
             </Button>
         </Grid>
